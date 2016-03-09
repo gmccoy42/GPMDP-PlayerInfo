@@ -20,6 +20,7 @@ optional arguments:
 ```
 
 The `--layout` option allows you to change the order the infomation is displayed in.
+Example: `player.py --layout t-a-A-p`
 
 ## i3Blocks
 ```
