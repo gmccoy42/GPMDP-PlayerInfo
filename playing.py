@@ -8,7 +8,7 @@ home = expanduser("~")
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description="Parses and print Google Play Music Desktop Player song info")
 
 def parseJson():
-    with open(home + '/GPMDP_STORE/playback.json') as f:
+    with open(home + '/.config/Google Play Music Desktop Player/json_store/playback.json') as f:
         data = f.read()
     return json.loads(data)
 
