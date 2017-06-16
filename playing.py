@@ -56,7 +56,10 @@ def run(data, layout):
         displaystr = parseLayout(layout)
     else:
         sys.stdout.write("   ")
-    print(displaystr.encode('utf-8'))
+    if sys.version[0] == '2':
+        print(displaystr.encode('utf-8'))
+    else:
+        print(displaystr)
 
 parser.add_argument("--layout",
         action="store",
