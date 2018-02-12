@@ -50,14 +50,17 @@ def parseLayout(layout):
             displaystr += " - "
     return displaystr
 
-def run(data, layout):
+def run(data, layout, notplaying):
     displaystr = ""
     if data['playing']:
         displaystr = parseLayout(layout)
     else:
         sys.stdout.write("   ")
     if sys.version[0] == '2':
-        print(displaystr.encode('utf-8'))
+        displaystr = displaystr.encode('utf-8')
+
+    if not displaystr and notplaying:
+        print("Not Playing")
     else:
         print(displaystr)
 
@@ -66,9 +69,14 @@ parser.add_argument("--layout",
         dest="layout",
         help="t = Song Title\na = Song Album\nA = Artist Name\np = Track time progess\n- = Spacer\nExample: t-a-A-p",
     )
+parser.add_argument("--not-playing",
+        action="store_true",
+        dest="notplaying",
+        help="Display the text 'Not Playing' when no music is playing",
+    )
 args = parser.parse_args()
 data = parseJson()
 try:
-    run(data, args.layout)
+    run(data, args.layout, args.notplaying)
 except:
-    run(data, "t-a-A-p")
+    run(data, "t-a-A-p", False)
