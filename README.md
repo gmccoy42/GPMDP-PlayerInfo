@@ -23,7 +23,7 @@ The `--layout` option allows you to change the order the infomation is displayed
 Example: `player.py --layout t-a-A-p`
 
 ## i3Blocks
-```
+```ini
 [music]
 label=
 command=<PATH-TO-SCRIPT>/gpmdp-playing/playing.py
@@ -32,3 +32,13 @@ interval=10
 color=#EEFF66
 ```
 
+## Polybar
+```ini
+[module/music]
+type = custom/script
+interval = 1
+;format-prefix = " "
+format = "<label>"
+exec = <PATH-TO-SCRIPT>/GPMDP-PlayerInfo/playing.py
+format-underline = #f00
+```
