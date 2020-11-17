@@ -63,7 +63,7 @@ def run(data, layout, notplaying, trunclen):
     if data['playing']:
         displaystr = parseLayout(layout)
     else:
-        sys.stdout.write("   ")
+        sys.stdout.write("")
     if sys.version[0] == '2':
         displaystr = displaystr.encode('utf-8')
 
