@@ -64,9 +64,10 @@ def run(data, layout, notplaying):
     else:
         print(displaystr)
 
-parser.add_argument("--layout",
+parser.add_argument("-l",
+        "--layout",
         action="store",
-        dest="layout",
+        metavar="layout",
         help="t = Song Title\na = Song Album\nA = Artist Name\np = Track time progess\n- = Spacer\nExample: t-a-A-p",
     )
 parser.add_argument("--not-playing",
