@@ -5,18 +5,22 @@ Google Play Music Desktop Player - https://github.com/MarshallOfSound/Google-Pla
 
 ## Usage
 ```
-usage: playing.py [-h] [--layout LAYOUT]
+usage: playing.py [-h] [-l layout] [-t trunclen] [--not-playing]
 
 Parses and print Google Play Music Desktop Player song info
 
 optional arguments:
-  -h, --help       show this help message and exit
-  --layout LAYOUT  t = Song Title
-                   a = Song Album
-                   A = Artist Name
-                   p = Track time progess
-                   - = Spacer
-                   Example: t-a-A-p
+  -h, --help            show this help message and exit
+  -l layout, --layout layout
+                        t = Song Title
+                        a = Song Album
+                        A = Artist Name
+                        p = Track time progess
+                        - = Spacer
+                        Example: t-a-A-p
+  -t trunclen, --trunclen trunclen
+                        Truncate the output
+  --not-playing         Display the text 'Not Playing' when no music is playing
 ```
 
 The `--layout` option allows you to change the order the infomation is displayed in.
