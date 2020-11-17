@@ -70,6 +70,12 @@ parser.add_argument("-l",
         metavar="layout",
         help="t = Song Title\na = Song Album\nA = Artist Name\np = Track time progess\n- = Spacer\nExample: t-a-A-p",
     )
+parser.add_argument("-t",
+        "--trunclen",
+        metavar="trunclen",
+        type=int,
+        help="Truncate the output"
+    )
 parser.add_argument("--not-playing",
         action="store_true",
         dest="notplaying",
