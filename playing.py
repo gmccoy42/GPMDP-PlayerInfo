@@ -50,24 +50,42 @@ def parseLayout(layout):
             displaystr += " - "
     return displaystr
 
-def run(data, layout, notplaying):
+def truncate(displaystr, trunclen):
+    if len(displaystr) > trunclen:
+        displaystr = displaystr[:trunclen]
+        displaystr += '...'
+        if ('(' in displaystr) and (')' not in displaystr):
+            displaystr += ')'
+    return displaystr
+
+def run(data, layout, notplaying, trunclen):
     displaystr = ""
     if data['playing']:
         displaystr = parseLayout(layout)
     else:
-        sys.stdout.write("   ")
+        sys.stdout.write("")
     if sys.version[0] == '2':
         displaystr = displaystr.encode('utf-8')
 
     if not displaystr and notplaying:
         print("Not Playing")
     else:
-        print(displaystr)
+        if trunclen is None:
+            print(displaystr)
+        else:
+            print(truncate(displaystr, trunclen))
 
-parser.add_argument("--layout",
+parser.add_argument("-l",
+        "--layout",
         action="store",
-        dest="layout",
+        metavar="layout",
         help="t = Song Title\na = Song Album\nA = Artist Name\np = Track time progess\n- = Spacer\nExample: t-a-A-p",
+    )
+parser.add_argument("-t",
+        "--trunclen",
+        metavar="trunclen",
+        type=int,
+        help="Truncate the output"
     )
 parser.add_argument("--not-playing",
         action="store_true",
@@ -77,6 +95,6 @@ parser.add_argument("--not-playing",
 args = parser.parse_args()
 data = parseJson()
 try:
-    run(data, args.layout, args.notplaying)
+    run(data, args.layout, args.notplaying, args.trunclen)
 except:
     run(data, "t-a-A-p", False)
